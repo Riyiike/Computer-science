@@ -1,0 +1,15 @@
+{
+  "name": "computer-science",
+  "version": "1.0.0",
+  "description": "",
+  "main": "factorial.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^3.4.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "",
+  "license": "ISC"
+}
