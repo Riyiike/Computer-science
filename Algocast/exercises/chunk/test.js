@@ -1,4 +1,5 @@
-const chunk = require('./index');
+// const chunk = require('.');
+const chunk = require('./solve');
 
 test('function chunk exists', () => {
   expect(typeof chunk).toEqual('function');
