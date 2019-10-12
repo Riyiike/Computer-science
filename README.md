@@ -1,2 +1,3 @@
-# code-challenges
-Collection of code challenges from hacker rank and codewars
+# Computer Science
+
+Collection materials and codes used in learning computer science
