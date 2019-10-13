@@ -8,6 +8,12 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 // Create a function that generate character map
+
+/**
+ *
+ * First solution
+ */
+
 const generateCharMap = str => {
   // Declare a variable to store number of occurrence of each character
   const charMap = {};
@@ -39,11 +45,27 @@ const compareCharMap = (objA, objB) => {
   return true;
 };
 
-const anagrams = (stringA, stringB) => {
+const anagrams_v1 = (stringA, stringB) => {
   let stringACharMap = generateCharMap(stringA);
   let stringBCharMap = generateCharMap(stringB);
 
   return compareCharMap(stringACharMap, stringBCharMap);
+};
+
+/**
+ * Second solution
+ */
+const sanitizeString = str => {
+  return str
+    .replace(/[^\w]/g, '')
+    .toLowerCase()
+    .split('')
+    .sort()
+    .join('');
+};
+
+const anagrams = (stringA, stringB) => {
+  return sanitizeString(stringA) === sanitizeString(stringB);
 };
 
 module.exports = anagrams;
