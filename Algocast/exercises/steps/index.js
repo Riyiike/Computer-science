@@ -17,7 +17,7 @@
 //       '### '
 //       '####'
 
-function steps(n) {
+function steps_v1(n) {
   // Note: We have 2 dimensional array
   // Iterate through n starting from 0 -> n (row)
   for (let row = 0; row < n; row++) {
@@ -38,6 +38,24 @@ function steps(n) {
     // console.log stair
     console.log(stair);
   }
+}
+
+function steps(n, row = 0, stair = '') {
+  // Base case for when given number is equal recursive number
+  if (n === row) {
+    return;
+  }
+
+  // Display output if length of result is equal n
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  // if length of stair is less or equal to current row
+  let isStairOrBlank = stair.length <= row ? '#' : ' ';
+
+  return steps(n, row, stair + isStairOrBlank);
 }
 
 module.exports = steps;
