@@ -1,4 +1,5 @@
 const capitalize = require('./index');
+// const capitalize = require('./solve');
 
 test('Capitalize is a function', () => {
   expect(typeof capitalize).toEqual('function');
