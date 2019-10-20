@@ -113,6 +113,22 @@ class LinkedList {
     const lastNode = this.getLast();
     lastNode.next = newNode;
   }
+
+  getAt(index) {
+    let currentNode = this.head;
+    let counter = 0;
+
+    while (currentNode) {
+      if (index === counter) {
+        return currentNode;
+      }
+
+      currentNode = currentNode.next;
+      counter++;
+    }
+
+    return null;
+  }
 }
 
 module.exports = { Node, LinkedList };
