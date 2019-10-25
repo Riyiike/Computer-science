@@ -14,6 +14,10 @@ const computeFactorial = num => {
 const computeFactorialRecursively = num => {
   // Factorial can be get by
   //multiplying all preceding number by given value
+  if (num < 1) {
+    return num;
+  }
+
   // base case: if number equals 1
   if (num === 1) {
     return 1;
@@ -23,4 +27,4 @@ const computeFactorialRecursively = num => {
   return num * computeFactorialRecursively(num - 1);
 };
 
-console.log(computeFactorialRecursively(10));
+console.log(computeFactorialRecursively(-1));
