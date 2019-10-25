@@ -3,15 +3,15 @@ const times10 = num => num * 10;
 const memoize = cb => {
   const cache = {};
 
-  return n => {
-    if (cache[n]) {
+  return (...args) => {
+    if (cache[args]) {
       console.log('Fetching from cache...');
-      return cache[n];
+      return cache[args];
     }
 
     console.log('Calculating...');
-    cache[n] = cb(n);
-    return cache[n];
+    cache[args] = cb(...args);
+    return cache[args];
   };
 };
 
