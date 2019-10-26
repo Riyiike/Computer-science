@@ -21,14 +21,14 @@ const capitalize = str => {
   // Pick the first character of the string and capitalize it
   let result = str[0].toUpperCase();
   // Cycle over array
-  // if the character to the left is a space
-  // Capitalize the current character
-  // else
-  // add current character to the string
   for (let i = 1; i < str.length; i++) {
+    // if the character to the left is a space
     if (str[i - 1] === ' ') {
+      // Capitalize the current character
       result += str[i].toUpperCase();
     } else {
+      // else
+      // add current character to the string
       result += str[i];
     }
   }
