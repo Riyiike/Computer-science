@@ -44,6 +44,47 @@ class LinkedList {
       this.tail = newNode;
     }
   }
+
+  contains(value) {
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (value === currentNode.value) {
+        return true;
+      }
+
+      currentNode = currentNode.next;
+    }
+
+    return false;
+  }
+
+  removeTail() {
+    if (!this.head.next) {
+      this.head = null;
+      this.tail = null;
+      return;
+    }
+
+    let currentNode = this.head;
+    let previousNode;
+
+    while (currentNode.next) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    previousNode.next = null;
+    this.tail = previousNode;
+  }
+
+  isHead(node) {
+    return node === this.head;
+  }
+
+  isTail(node) {
+    return node === this.tail;
+  }
 }
 
 const newNode = new Node(1);
@@ -53,5 +94,9 @@ myList.insertAfter(2);
 myList.insertAfter(3);
 myList.insertAfter(4);
 myList.insertAfter(5);
-
-console.log(myList.getAllNodeValues());
+myList.insertAfter(6);
+myList.insertAfter(7);
+console.log(myList.contains(8));
+// console.log(myList.isHead(newNode));
+// console.log(myList.removeTail());
+// console.log(myList.getAllNodeValues());
