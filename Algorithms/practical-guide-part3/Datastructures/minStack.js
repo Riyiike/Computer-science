@@ -58,3 +58,4 @@ myMinStack.push(3);
 myMinStack.push(0);
 
 console.log(myMinStack.peek());
+console.log(myMinStack);
