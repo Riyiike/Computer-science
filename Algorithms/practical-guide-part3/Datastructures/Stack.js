@@ -13,6 +13,8 @@ class Stack {
       this._storage[this._length] = data;
       // Increase length by 1
       this._length++;
+
+      return this._length;
     }
   }
 
