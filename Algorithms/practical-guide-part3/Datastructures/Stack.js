@@ -37,13 +37,15 @@ class Stack {
   }
 }
 
-const myStack = new Stack();
-myStack.push(1);
-myStack.push(2);
-myStack.push(3);
+// const myStack = new Stack();
+// myStack.push(1);
+// myStack.push(2);
+// myStack.push(3);
 
-console.log(myStack.peek());
+// console.log(myStack.peek());
 
-myStack.pop();
+// myStack.pop();
 
-console.log(myStack);
+// console.log(myStack);
+
+module.exports = Stack;
