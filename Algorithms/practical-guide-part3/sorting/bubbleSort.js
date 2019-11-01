@@ -9,7 +9,6 @@ const bubbleSort_v1 = arr => {
         arr[i] = arr[j]; // O(1)
         arr[j] = temp; // O(1)
       }
-      console.log(arr);
     }
   }
 

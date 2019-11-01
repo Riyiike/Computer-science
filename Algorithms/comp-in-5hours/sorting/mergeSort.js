@@ -1,12 +1,12 @@
-const mergeSort = nums => {
-  if (nums.length < 2) {
-    return nums;
+const mergeSort = arr => {
+  if (arr.length < 2) {
+    return arr;
   }
 
-  const length = nums.length;
+  const length = arr.length;
   const middle = Math.floor(length / 2);
-  const left = nums.slice(0, middle);
-  const right = nums.slice(middle, length);
+  const left = arr.slice(0, middle);
+  const right = arr.slice(middle, length);
 
   const sortedLeft = mergeSort(left);
   const sortedRight = mergeSort(right);
