@@ -5,6 +5,7 @@ const bubbleSort_v1 = arr => {
     for (let j = i; j < arr.length; j++) {
       // O(1)
       if (arr[i] > arr[j]) {
+        // Note: if no swapped it's adaptive
         const temp = arr[i]; // O(1)
         arr[i] = arr[j]; // O(1)
         arr[j] = temp; // O(1)
@@ -23,6 +24,7 @@ const bubbleSort = arr => {
 
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] > arr[i + 1]) {
+        // Note: if no swapped it's adaptive
         let temp = arr[i + 1];
         arr[i + 1] = arr[i];
         arr[i] = temp;
@@ -35,6 +37,5 @@ const bubbleSort = arr => {
   return arr;
 };
 
-console.log(
-  bubbleSort_v1([300, 200, 5, 4, 5, 2, 9, 23, 0, 9, 1000, -1, 3, 2, 1])
-);
+console.log(bubbleSort_v1([1, 2, 3, 4, 5]));
+// 300, 200, 5, 4, 5, 2, 9, 23, 0, 9, 1000, -1, 3, 2, 1
