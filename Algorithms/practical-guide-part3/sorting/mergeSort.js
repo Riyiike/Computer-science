@@ -1,32 +1,41 @@
 const merge = (sortedLeft, sortedRight) => {
   const result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
 
-  while (sortedLeft.length && sortedRight.length) {
-    if (sortedLeft[0] > sortedRight[0]) {
-      result.push(sortedRight.shift());
+  while (leftIndex < sortedLeft.length && rightIndex < sortedRight.length) {
+    if (sortedLeft[leftIndex] <= sortedRight[rightIndex]) {
+      result.push(sortedLeft[leftIndex]);
+      leftIndex++;
     } else {
-      result.push(sortedLeft.shift());
+      result.push(sortedRight[rightIndex]);
+      rightIndex++;
     }
   }
 
-  return [...result, ...sortedLeft, ...sortedRight];
+  return [
+    ...result,
+    ...sortedLeft.slice(leftIndex),
+    ...sortedRight.slice(rightIndex)
+  ];
 };
 
 const mergeSort = arr => {
-  // Note: the passed in array must be a sorted array
-  if (arr.length < 2) {
+  if (arr.length === 1) {
     return arr;
   }
 
-  const length = arr.length;
-
-  const pivot = Math.floor(length / 2);
+  const arrLength = arr.length;
+  const pivot = Math.floor(arrLength / 2);
   const left = arr.slice(0, pivot);
   const right = arr.slice(pivot);
 
   const sortedLeft = mergeSort(left);
   const sortedRight = mergeSort(right);
-  return merge(sortedLeft, sortedRight);
+
+  const result = merge(sortedLeft, sortedRight);
+
+  return result;
 };
 
-console.log(mergeSort([-1, 9, 3, 8, 1, 4, 0, 2]));
+console.log(mergeSort([9, 4, 1, 2, 8, 0, -10, -1, 90, 20]));
