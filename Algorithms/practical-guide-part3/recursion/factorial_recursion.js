@@ -1,6 +1,6 @@
 const factorialRecurs = num => {
   // Base case
-  if (num === 1) {
+  if (num < 2) {
     return num;
   }
 

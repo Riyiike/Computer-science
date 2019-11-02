@@ -25,17 +25,17 @@ const mergeSort = arr => {
     return arr;
   }
 
-  const arrLength = arr.length;
-  const pivot = Math.floor(arrLength / 2);
-  const left = arr.slice(0, pivot);
-  const right = arr.slice(pivot);
+  const arrLength = arr.length; // O(1)
+  const pivot = Math.floor(arrLength / 2); // O(1)
+  const left = arr.slice(0, pivot); // N/A
+  const right = arr.slice(pivot); // N/A
 
-  const sortedLeft = mergeSort(left);
-  const sortedRight = mergeSort(right);
+  const sortedLeft = mergeSort(left); // O(log n)
+  const sortedRight = mergeSort(right); // O(log n)
 
-  const result = merge(sortedLeft, sortedRight);
+  const result = merge(sortedLeft, sortedRight); // O(n)
 
-  return result;
+  return result; // O(1)
 };
 
 console.log(mergeSort([9, 4, 1, 2, 8, 0, -10, -1, 90, 20]));

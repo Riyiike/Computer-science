@@ -1,7 +1,4 @@
-const swap(arr, i1, i2) {
-
-// }
-
-// const partition = (arr, low, high) => {
-
-// }
+if (high - low === arr.length - 1) {
+  //   console.log(low);
+  //   return arr;
+  // }

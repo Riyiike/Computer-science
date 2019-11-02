@@ -1,13 +1,9 @@
 const swap = (arr, i1, i2) => {
-  if (arr[i1] === arr[i2]) {
-    return arr;
-  }
-
   const temp = arr[i1];
   arr[i1] = arr[i2];
   arr[i2] = temp;
 
-  return temp;
+  return arr;
 };
 
 const partition = (arr, low, high) => {
@@ -15,21 +11,24 @@ const partition = (arr, low, high) => {
   let pivotLocation = low;
 
   for (let i = pivotLocation; i < high; i++) {
-    if (arr[i] <= pivot) {
+    if (arr[i] < pivot) {
       swap(arr, pivotLocation, i);
       pivotLocation++;
     }
   }
 
+  // Swap pivot to the a proper position based on lesser or greater value
   swap(arr, pivotLocation, high);
   return pivotLocation;
 };
 
 const quickSort = (arr, low = 0, high = arr.length - 1) => {
   if (low < high) {
-    const p = partition(arr, low, high);
-    quickSort(arr, low, p - 1);
-    quickSort(arr, p + 1, high);
+    const pivotLocation = partition(arr, low, high);
+    // Invoke quickSort for left values lesser than pivotLocation
+    quickSort(arr, low, pivotLocation - 1);
+    // Invoke quickSort for right values greater than pivotLocation
+    quickSort(arr, pivotLocation + 1, high);
   }
 
   if (high - low === arr.length - 1) {
