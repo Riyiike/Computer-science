@@ -14,12 +14,12 @@ class Tree {
 
 const myTree = new Tree(1);
 
-const branch1 = myTree.addChild(2);
+const branch1 = myTree
+  .addChild(2)
+  .addChild(4)
+  .addChild(5);
 const branch2 = myTree.addChild(3);
 const branch3 = myTree.addChild(4);
 const branch4 = myTree.addChild(5);
-
-branch1.addChild(4);
-branch1.addChild(5);
 
 console.log(myTree);
