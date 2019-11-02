@@ -18,4 +18,4 @@ const quickSort = arr => {
   return [...quickSort(left), pivot, ...quickSort(right)];
 };
 
-console.log(quickSort([9, 4, 8, -1, 3, 10, 15]));
+console.log(quickSort([4, 1, -1, 0, 6, 3, 2, 7, 2]));
