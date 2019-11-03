@@ -99,6 +99,56 @@ class Bst {
     // self
     cb(this);
   }
+
+  deleteMin(parent) {
+    // if current node is the minimum
+    if (!this.left && !this.right) {
+      //Note: current node is the minimum => set its parent left node to null
+      if (parent) {
+        // left node will always be smaller than parent node
+        parent.left = null;
+      } else {
+        // Note: when current node is the root and only node
+        this.data = null;
+      }
+    } else if (!this.left && this.right) {
+      if (parent) {
+        // set current parent node to current right node
+        parent.left = this.right;
+      } else {
+        // Note: when all node are greater than current node and its the root node
+        this.data = this.right.data;
+        this.right = this.right.right;
+      }
+    }
+
+    // If both left and right node exist
+    // we recurs till the last node
+    if (this.left) {
+      this.left.deleteMin(this);
+    }
+  }
+
+  deleteMax(parent) {
+    if (!this.right && !this.left) {
+      if (parent) {
+        parent.right = null;
+      } else {
+        this.data = null;
+      }
+    } else if (!this.right && this.left) {
+      if (parent) {
+        parent.right = this.left;
+      } else {
+        this.data = this.left.data;
+        this.left = this.left.left;
+      }
+    }
+
+    if (this.right) {
+      this.right.deleteMax(this);
+    }
+  }
 }
 
 const myBst = new Bst(10);
@@ -119,6 +169,10 @@ myBst.insert(40);
 //   console.log(currentNode.data);
 // });
 
-myBst.deptFirstPostOrderTraversal(currentNode => {
-  console.log(currentNode.data);
-});
+// myBst.deptFirstPostOrderTraversal(currentNode => {
+//   console.log(currentNode.data);
+// });
+
+myBst.deleteMax();
+myBst.deleteMax();
+console.log(myBst);
