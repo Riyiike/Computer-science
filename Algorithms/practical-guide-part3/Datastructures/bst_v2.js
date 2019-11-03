@@ -44,6 +44,22 @@ class Bst {
 
     return false;
   }
+
+  deptFirstInOrderTraversal(cb) {
+    if (!this.left && !this.right) {
+      return cb(this);
+    }
+
+    if (this.left) {
+      this.left.deptFirstInOrderTraversal(cb);
+    }
+
+    cb(this);
+
+    if (this.right) {
+      this.right.deptFirstInOrderTraversal(cb);
+    }
+  }
 }
 
 const myBst = new Bst(10);
@@ -52,6 +68,10 @@ myBst.insert(8);
 myBst.insert(20);
 myBst.insert(40);
 
-console.log(myBst.contains(10));
+// console.log(myBst.contains(10));
 
-console.log(myBst);
+// console.log(myBst);
+
+myBst.deptFirstInOrderTraversal(currentNode => {
+  console.log(currentNode.data);
+});
