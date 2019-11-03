@@ -8,14 +8,14 @@ class Queue {
   }
 
   enqueue(data) {
-    if (data) {
+    if (data !== undefined) {
       this._storage[this._length + this._startIndex] = data;
       this._length++;
     }
   }
 
   dequeue() {
-    if (this._storage) {
+    if (this._length) {
       const removedItem = this._storage[this._startIndex];
       delete this._storage[this._startIndex];
 

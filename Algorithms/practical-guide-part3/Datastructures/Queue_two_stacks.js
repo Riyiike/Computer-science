@@ -7,7 +7,9 @@ class QueueTwoStacks {
   }
 
   enqueue(value) {
-    return this._stackIn.push(value);
+    if (value !== undefined) {
+      return this._stackIn.push(value);
+    }
   }
 
   dequeue() {

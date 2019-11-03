@@ -1,4 +1,5 @@
 const merge = (sortedLeft, sortedRight) => {
+  // Note: the passed in array must be a sorted array
   const result = [];
 
   while (sortedLeft.length && sortedRight.length) {
@@ -13,7 +14,6 @@ const merge = (sortedLeft, sortedRight) => {
 };
 
 const mergeSort = arr => {
-  // Note: the passed in array must be a sorted array
   if (arr.length < 2) {
     return arr; // O(1)
   }

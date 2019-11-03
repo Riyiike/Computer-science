@@ -8,6 +8,10 @@ class Bst {
   insert(data) {
     const newNode = new Bst(data);
 
+    if (this.data === data) {
+      return false;
+    }
+
     if (data < this.data) {
       if (this.left) {
         this.left.insert(data);
@@ -50,4 +54,4 @@ myBst.insert(40);
 
 console.log(myBst.contains(10));
 
-// console.log(myBst);
+console.log(myBst);
