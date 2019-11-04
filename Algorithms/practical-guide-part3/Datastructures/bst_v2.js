@@ -149,6 +149,17 @@ class Bst {
       this.right.deleteMax(this);
     }
   }
+
+  traverseBreathFirst(cb) {
+    const queue = [this];
+
+    while (queue.length) {
+      let node = queue.shift();
+      cb(node);
+      node.left && queue.push(node.left);
+      node.right && queue.push(node.right);
+    }
+  }
 }
 
 const myBst = new Bst(10);
@@ -173,6 +184,10 @@ myBst.insert(40);
 //   console.log(currentNode.data);
 // });
 
-myBst.deleteMax();
-myBst.deleteMax();
-console.log(myBst);
+// myBst.deleteMax();
+// myBst.deleteMax();
+// console.log(myBst);
+
+myBst.traverseBreathFirst(currentNode => {
+  console.log(currentNode.data);
+});
