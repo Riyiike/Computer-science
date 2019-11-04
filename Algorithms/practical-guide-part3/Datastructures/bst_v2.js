@@ -154,19 +154,72 @@ class Bst {
     const queue = [this];
 
     while (queue.length) {
-      let node = queue.shift();
+      const node = queue.shift();
+
       cb(node);
       node.left && queue.push(node.left);
       node.right && queue.push(node.right);
     }
   }
+
+  checkIfFull() {
+    let result = true;
+
+    this.traverseBreathFirst(currentNode => {
+      if (!currentNode.left && currentNode.right) {
+        result = false;
+      } else if (currentNode.left && !currentNode.right) {
+        result = false;
+      }
+    });
+
+    return result;
+  }
+
+  checkIfBalanced() {
+    const heights = [];
+
+    const recurs = (node, height) => {
+      if (!node.left && !node.right) {
+        heights.push(height);
+      }
+
+      node.left && recurs(node.left, height + 1);
+      node.right && recurs(node.right, height + 1);
+    };
+
+    recurs(this, 1);
+    let min = Math.min(heights);
+    let max = Math.max(heights);
+
+    return max - min <= 1;
+  }
 }
 
 const myBst = new Bst(10);
-myBst.insert(9);
-myBst.insert(8);
-myBst.insert(20);
-myBst.insert(40);
+myBst
+  .insert(5)
+  .insert(15)
+  .insert(8)
+  .insert(3)
+  .insert(7)
+  .insert(20)
+  .insert(17)
+  .insert(9)
+  .insert(14);
+
+const fullBSTree = new Bst(10);
+fullBSTree
+  .insert(5)
+  .insert(20)
+  .insert(15)
+  .insert(21)
+  .insert(16)
+  .insert(13);
+// console.log(fullBSTree.checkIfFull(), 'should be true');
+// console.log(fullBSTree.checkIfBalanced(), 'should be false');
+
+console.log(fullBSTree);
 
 // console.log(myBst.contains(10));
 
@@ -188,6 +241,9 @@ myBst.insert(40);
 // myBst.deleteMax();
 // console.log(myBst);
 
-myBst.traverseBreathFirst(currentNode => {
-  console.log(currentNode.data);
-});
+// myBst.traverseBreathFirst(currentNode => {
+//   console.log(currentNode.data);
+// });
+
+// console.log(myBst.checkIfFull());
+console.log(myBst.checkIfBalanced());
