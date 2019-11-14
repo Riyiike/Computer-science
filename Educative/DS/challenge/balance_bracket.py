@@ -48,16 +48,20 @@ def is_match(p1, p2):
 
 
 def is_paren_balanced(paren_string):
-    my_stack = []
+    # Create new stack to store bracket
+    my_stack = Stack()
+    # set is balance to true
     is_balanced = True
+    # index store starting position of the paren_string
     index = 0
 
     while index < len(paren_string) and is_balanced:
         paren = paren_string[index]
+
         if paren in "({[":
-            my_stack.append(paren)
+            my_stack.push(paren)
         else:
-            if len(my_stack) == 0:
+            if my_stack.is_empty():
                 is_balanced = False
             else:
                 last_pushed = my_stack.pop()
@@ -66,10 +70,7 @@ def is_paren_balanced(paren_string):
 
         index += 1
 
-    if is_balanced:
-        return True
-    else:
-        return False
+    return my_stack.is_empty() and is_balanced
 
 
 print("String : (((({})))) Balanced or not?")
@@ -83,3 +84,6 @@ print(is_paren_balanced("[][]"))
 
 print("String : ]}[] Balanced or not?")
 print(is_paren_balanced("]}[]"))
+
+print("String : (() Balanced or not?")
+print(is_paren_balanced("(()"))
