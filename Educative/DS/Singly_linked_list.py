@@ -50,6 +50,30 @@ class LinkedList:
             print(current_node.data)
             current_node = current_node.next
 
+    def delete_node(self, value):
+        # if head is None
+        if self.head is None:
+            return
+
+        # if value matche head value
+        if self.head.data == value:
+            self.head = self.head.next
+            return
+
+        # if Node position is unknown
+        current_node = self.head
+        prev = None
+
+        while current_node and current_node.data != value:
+            prev = current_node
+            current_node = current_node.next
+
+        if current_node is None:
+            print("Provided value does not exist")
+            return
+
+        prev.next = current_node.next
+
 
 my_list = LinkedList()
 my_list.append("A")
@@ -57,8 +81,10 @@ my_list.append("B")
 my_list.append("C")
 my_list.append("D")
 
-my_list.prepend("Z")
+# my_list.prepend("Z")
 
-my_list.insert_after_node(my_list.head.next, "K")
+# my_list.insert_after_node(my_list.head.next, "K")
+
+my_list.delete_node("Z")
 
 my_list.print_list()
