@@ -111,37 +111,69 @@ class LinkedList:
             return 1 + self.len_cursive(current_node.next)
 
     def swap_nodes(self, value1, value2):
+        # if values are the same
         if value1 == value2:
             return
 
         prev_1 = None
-        curr_1 = self.head
+        current_1 = self.head
 
-        while curr_1 and curr_1.data != value1:
-            prev_1 = curr_1
-            curr_1 = curr_1.next
+        # Cycle over linkedlist
+        while current_1 and current_1.data != value1:
+            prev_1 = current_1
+            current_1 = current_1.next
 
         prev_2 = None
-        curr_2 = self.head
+        current_2 = self.head
 
-        while curr_2 and curr_2.data != value2:
-            prev_2 = curr_2
-            curr_2 = curr_2.next
+        while current_2 and current_2.data != value2:
+            prev_2 = current_2
+            current_2 = current_2.next
 
-        if not curr_1 or not curr_2:
+        if not current_1 or not current_2:
             return
 
         if prev_1:
-            prev_1.next = curr_2
+            prev_1.next = current_2
         else:
-            self.head = curr_2
+            self.head = current_2
 
         if prev_2:
-            prev_2.next = curr_1
+            prev_2.next = current_1
         else:
-            self.head = curr_1
+            self.head = current_1
 
-        curr_1.next, curr_2.next = curr_2.next, curr_1.next
+        current_1.next, current_2.next = current_2.next, current_1.next
+
+    def reverse_iterative(self):
+        prev = None
+        current_node = self.head
+
+        while current_node:
+            # get next node
+            next_node = current_node.next
+            # set current node next to it's previous node
+            current_node.next = prev
+            # set previous to current node
+            prev = current_node
+            # set current node to equals next node
+            current_node = next_node
+
+        self.head = prev
+
+    def reverse_recursive(self):
+        def _reverse_recursive(current, prev):
+            if not current:
+                return prev
+
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+            return _reverse_recursive(current, prev)
+
+        self.head = _reverse_recursive(current=self.head, prev=None)
 
 
 my_list = LinkedList()
@@ -159,6 +191,8 @@ my_list.append("D")
 # my_list.delete_node_at_pos(1)
 # print(my_list.len_iterative())
 # print(my_list.len_cursive(my_list.head))
-my_list.swap_nodes(my_list.head.data, my_list.head.next.data)
+# my_list.swap_nodes(my_list.head.data, my_list.head.next.data)
+# my_list.reverse_iterative()
+my_list.reverse_recursive()
 
 my_list.print_list()
