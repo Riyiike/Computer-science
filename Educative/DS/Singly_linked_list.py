@@ -175,12 +175,49 @@ class LinkedList:
 
         self.head = _reverse_recursive(current=self.head, prev=None)
 
+    def merge_sorted(self, new_list):
+        first_list = self.head
+        second_list = new_list.head
+        node_with_smaller_value = None
 
-my_list = LinkedList()
-my_list.append("A")
-my_list.append("B")
-my_list.append("C")
-my_list.append("D")
+        if not first_list:
+            return second_list
+
+        if not second_list:
+            return first_list
+
+        if first_list.data <= second_list.data:
+            node_with_smaller_value = first_list
+            first_list = node_with_smaller_value.next
+        else:
+            node_with_smaller_value = second_list
+            second_list = node_with_smaller_value.next
+
+        new_head = node_with_smaller_value
+
+        while first_list and second_list:
+            if first_list.data <= second_list.data:
+                node_with_smaller_value.next = first_list
+                node_with_smaller_value = first_list
+                first_list = node_with_smaller_value.next
+            else:
+                node_with_smaller_value.next = second_list
+                node_with_smaller_value = second_list
+                second_list = node_with_smaller_value.next
+
+        if not first_list:
+            node_with_smaller_value.next = second_list
+        if not second_list:
+            node_with_smaller_value.next = first_list
+
+        return new_head
+
+
+# my_list = LinkedList()
+# my_list.append("A")
+# my_list.append("B")
+# my_list.append("C")
+# my_list.append("D")
 
 # my_list.prepend("Z")
 
@@ -193,6 +230,23 @@ my_list.append("D")
 # print(my_list.len_cursive(my_list.head))
 # my_list.swap_nodes(my_list.head.data, my_list.head.next.data)
 # my_list.reverse_iterative()
-my_list.reverse_recursive()
+# my_list.reverse_recursive()
 
-my_list.print_list()
+my_list1 = LinkedList()
+my_list2 = LinkedList()
+
+my_list1.append(1)
+my_list1.append(5)
+my_list1.append(7)
+my_list1.append(9)
+my_list1.append(10)
+
+my_list2.append(2)
+my_list2.append(3)
+my_list2.append(4)
+my_list2.append(6)
+my_list2.append(8)
+
+my_list1.merge_sorted(my_list2)
+
+my_list1.print_list()
