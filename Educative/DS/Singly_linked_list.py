@@ -212,12 +212,30 @@ class LinkedList:
 
         return new_head
 
+    def remove_duplicates(self):
+        current = self.head
+        prev = None
 
-# my_list = LinkedList()
-# my_list.append("A")
-# my_list.append("B")
-# my_list.append("C")
-# my_list.append("D")
+        duplicate_values = dict()
+
+        while current:
+            if current.data in duplicate_values:
+                prev.next = current.next
+                current = None
+            else:
+                duplicate_values[current.data] = 1
+                prev = current
+
+            current = prev.next
+
+
+my_list = LinkedList()
+my_list.append("D")
+my_list.append("A")
+my_list.append("B")
+my_list.append("B")
+my_list.append("C")
+my_list.append("D")
 
 # my_list.prepend("Z")
 
@@ -232,21 +250,23 @@ class LinkedList:
 # my_list.reverse_iterative()
 # my_list.reverse_recursive()
 
-my_list1 = LinkedList()
-my_list2 = LinkedList()
+# my_list1 = LinkedList()
+# my_list2 = LinkedList()
 
-my_list1.append(1)
-my_list1.append(5)
-my_list1.append(7)
-my_list1.append(9)
-my_list1.append(10)
+# my_list1.append(1)
+# my_list1.append(5)
+# my_list1.append(7)
+# my_list1.append(9)
+# my_list1.append(10)
 
-my_list2.append(2)
-my_list2.append(3)
-my_list2.append(4)
-my_list2.append(6)
-my_list2.append(8)
+# my_list2.append(2)
+# my_list2.append(3)
+# my_list2.append(4)
+# my_list2.append(6)
+# my_list2.append(8)
 
-my_list1.merge_sorted(my_list2)
+# my_list1.merge_sorted(my_list2)
 
-my_list1.print_list()
+my_list.remove_duplicates()
+
+my_list.print_list()
