@@ -130,6 +130,7 @@ class LinkedList:
             prev_2 = current_2
             current_2 = current_2.next
 
+        # if any of the two values to swap does not exist
         if not current_1 or not current_2:
             return
 
@@ -228,11 +229,25 @@ class LinkedList:
 
             current = prev.next
 
+    def print_nth_from_last(self, n):
+        total_length = self.len_iterative()
+
+        current_node = self.head
+
+        while current_node:
+            if total_length == n:
+                print(current_node.data)
+                return current_node.data
+            else:
+                current_node = current_node.next
+                total_length -= 1
+
+        if current_node is None:
+            return
+
 
 my_list = LinkedList()
-my_list.append("D")
 my_list.append("A")
-my_list.append("B")
 my_list.append("B")
 my_list.append("C")
 my_list.append("D")
@@ -267,6 +282,8 @@ my_list.append("D")
 
 # my_list1.merge_sorted(my_list2)
 
-my_list.remove_duplicates()
+# my_list.remove_duplicates()
 
-my_list.print_list()
+# my_list.print_list()
+
+my_list.print_nth_from_last(1)
