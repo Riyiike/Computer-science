@@ -245,8 +245,18 @@ class LinkedList:
         if current_node is None:
             return
 
+    def count_occurences_iterative(self, data):
+        count = 0
+        cur = self.head
+        while cur:
+            if cur.data == data:
+                count += 1
+            cur = cur.next
+        return count
+
 
 my_list = LinkedList()
+my_list.append("A")
 my_list.append("A")
 my_list.append("B")
 my_list.append("C")
@@ -285,5 +295,6 @@ my_list.append("D")
 # my_list.remove_duplicates()
 
 # my_list.print_list()
+print(my_list.count_occurences_iterative("A"))
 
 my_list.print_nth_from_last(1)
