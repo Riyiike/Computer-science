@@ -262,13 +262,35 @@ class LinkedList:
         else:
             return self.count_occurences_recursive(node.next, data)
 
+    def rotate(self, k):
+        if self.head and self.head.next:
+            p = self.head
+            q = self.head
+            prev = None
+            count = 0
+
+            while p and count < k:
+                prev = p
+                p = p.next
+                q = q.next
+                count += 1
+            p = prev
+            while q:
+                prev = q
+                q = q.next
+            q = prev
+
+            q.next = self.head
+            self.head = p.next
+            p.next = None
+
 
 my_list = LinkedList()
-my_list.append("A")
-my_list.append("A")
-my_list.append("B")
-my_list.append("C")
-my_list.append("D")
+# my_list.append("A")
+# my_list.append("A")
+# my_list.append("B")
+# my_list.append("C")
+# my_list.append("D")
 
 # my_list.prepend("Z")
 
@@ -303,6 +325,17 @@ my_list.append("D")
 # my_list.remove_duplicates()
 
 # my_list.print_list()
-print(my_list.count_occurences_iterative("A"))
+# print(my_list.count_occurences_iterative("A"))
 
-my_list.print_nth_from_last(1)
+my_list = LinkedList()
+my_list.append(1)
+my_list.append(2)
+my_list.append(3)
+my_list.append(4)
+my_list.append(5)
+my_list.append(6)
+
+my_list.rotate(3)
+my_list.print_list()
+
+# my_list.print_nth_from_last(1)
